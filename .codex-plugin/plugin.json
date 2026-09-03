@@ -1,7 +1,7 @@
 {
   "name": "apple-l10n-toolkit",
-  "version": "0.1.0",
-  "description": "Three-direction localization audit and translate workflow for Apple app projects (.strings / .xcstrings).",
+  "version": "0.2.0",
+  "description": "Localization audits (completeness, hardcoded strings, unused keys, RTL layout) plus a translate workflow for Apple app projects (.strings / .xcstrings).",
   "author": {
     "name": "yvente",
     "url": "https://github.com/yvente"
@@ -14,7 +14,7 @@
   "interface": {
     "displayName": "Apple L10n Toolkit",
     "shortDescription": "Audit and complete localization for Apple app projects.",
-    "longDescription": "Check locale completeness, detect hardcoded UI strings missing from catalogs, find unused catalog keys, and translate missing entries across locales through a repeatable l10n/ workflow.",
+    "longDescription": "Check locale completeness, detect hardcoded UI strings missing from catalogs, find unused catalog keys, audit RTL layout adaptation, and translate missing entries across locales through a repeatable l10n/ workflow.",
     "developerName": "yvente",
     "category": "Productivity",
     "capabilities": ["Localization audit", "Static analysis", "Translation workflow"],
@@ -22,7 +22,8 @@
     "defaultPrompt": [
       "Audit this app's localization completeness.",
       "Find hardcoded UI strings missing from my string catalog.",
-      "Find unused keys in my .xcstrings catalog."
+      "Find unused keys in my .xcstrings catalog.",
+      "Check this project's RTL layout adaptation."
     ],
     "brandColor": "#F59E0B"
   }

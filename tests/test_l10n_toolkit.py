@@ -157,5 +157,49 @@ class TranslateWorkflowTests(unittest.TestCase):
             self.assertEqual(json.loads(missing.stdout), {})
 
 
+class SkillStructureTests(unittest.TestCase):
+    """Every skill is self-contained and its spec copy stays in sync."""
+
+    EXPECTED_SKILLS = {
+        "check-l10n-apple",
+        "check-ui-hardcoded",
+        "check-l10n-unused-keys",
+        "check-rtl-apple",
+        "translate",
+    }
+
+    def test_expected_skill_set(self):
+        names = {p.name for p in (REPO / "skills").iterdir() if p.is_dir()}
+        self.assertEqual(names, self.EXPECTED_SKILLS)
+
+    def test_each_skill_has_required_parts(self):
+        for skill in self.EXPECTED_SKILLS:
+            base = REPO / "skills" / skill
+            self.assertTrue((base / "SKILL.md").is_file(), skill)
+            self.assertTrue((base / "agents" / "openai.yaml").is_file(), skill)
+            self.assertTrue(
+                (base / "references" / "l10n-audit-specification.md").is_file(),
+                skill,
+            )
+
+    def test_skill_frontmatter(self):
+        for skill in self.EXPECTED_SKILLS:
+            text = (REPO / "skills" / skill / "SKILL.md").read_text(encoding="utf-8")
+            self.assertTrue(text.startswith("---\n"), skill)
+            frontmatter = text.split("---\n")[1]
+            self.assertIn(f"name: {skill}", frontmatter)
+            self.assertIn("description:", frontmatter)
+
+    def test_spec_copies_in_sync_with_canonical(self):
+        canonical = (
+            REPO / "references" / "l10n-audit-specification.md"
+        ).read_text(encoding="utf-8")
+        for skill in self.EXPECTED_SKILLS:
+            copy = (
+                REPO / "skills" / skill / "references" / "l10n-audit-specification.md"
+            ).read_text(encoding="utf-8")
+            self.assertEqual(copy, canonical, f"{skill}: spec copy out of sync")
+
+
 if __name__ == "__main__":
     unittest.main()

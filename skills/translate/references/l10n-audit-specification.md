@@ -10,19 +10,19 @@ Apple app projects localized with classic `.strings` (one file per
 `<locale>.lproj/`) or string catalogs (`.xcstrings`). Source language is
 assumed to be English (`en`) unless a project declares otherwise.
 
-## Three audit directions
+## Audit directions
 
-Localization defects fall into three disjoint directions. Each skill audits
-exactly one; together they close the loop.
+Localization defects fall into disjoint audit directions. Each skill audits
+exactly one; together with `translate` they close the loop.
 
 | Direction | Skill | Question answered |
 |---|---|---|
 | locale ↔ locale | `check-l10n-apple` | Is every locale complete and actually translated? |
 | code → table | `check-ui-hardcoded` | Does every user-facing string literal reach a catalog? |
 | table → code | `check-l10n-unused-keys` | Is every catalog key still referenced by code? |
+| locale → layout | `check-rtl-apple` | Does the layout survive a right-to-left locale? |
 
-A fourth skill, `translate`, is not an audit: it fills the gaps the audits
-find.
+The `translate` skill is not an audit: it fills the gaps the audits find.
 
 ### Direction 1: locale completeness (`check_l10n.py`)
 
@@ -87,6 +87,28 @@ Exit codes: `0` clean, `1` findings (with `--strict`), `2` no catalogs found.
 
 Limits: keys assembled at runtime from variables cannot be proven used;
 review before deleting. Classic `.strings` is not covered by direction 3.
+
+### Companion direction: RTL layout adaptation (`check-rtl-apple`)
+
+Judgment audit (no deterministic script) of how the layout behaves under
+right-to-left locales, run when adding Arabic/Hebrew/Urdu or auditing RTL
+regressions. Contract:
+
+- **Must mirror** — navigation, list/content order, text alignment, page
+  transitions, non-directional icons.
+- **Must stay LTR** (forced via `.environment(\.layoutDirection,
+  .leftToRight)`) — playback controls and progress, physical metaphors,
+  clocks, map directions.
+- **SF Symbols** — directional chevrons/arrows in navigation must use the
+  adaptive variants (`chevron.forward`/`backward`, `sidebar.leading`);
+  playback symbols correctly stay LTR.
+- The LTR override must be scoped tightly: per icon or per playback-control
+  container, never around `Text` or page-level stacks.
+- Output is a fixed report shape (must-fix / confirm / handled) with
+  `file:line` evidence; the skill never edits sources.
+
+Paired with `translate`: adding an RTL locale should be followed by this
+audit once the locale renders.
 
 ## The `l10n/` working directory
 

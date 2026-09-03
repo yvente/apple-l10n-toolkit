@@ -1,0 +1,4 @@
+interface:
+  display_name: "Check RTL (Apple)"
+  short_description: "Audit SwiftUI RTL layout adaptation per Apple HIG."
+  default_prompt: "Use $check-rtl-apple to audit this project's RTL adaptation."

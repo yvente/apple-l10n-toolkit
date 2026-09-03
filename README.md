@@ -1,8 +1,8 @@
 # Apple L10n Toolkit
 
 Apple L10n Toolkit is an agent plugin for Codex, ZCode, and Claude Code
-containing four focused skills for repeatable Apple app localization work:
-three complementary audits plus a translate workflow.
+containing five focused skills for repeatable Apple app localization work:
+four complementary audits plus a translate workflow.
 
 It works with classic `.strings` files and string catalogs (`.xcstrings`),
 SwiftUI or UIKit, in any Apple project shape.
@@ -14,6 +14,7 @@ SwiftUI or UIKit, in any Apple project shape.
 | `$check-l10n-apple` | locale ↔ locale | Is every locale complete and actually translated? | per-locale missing / extra / likely-untranslated report |
 | `$check-ui-hardcoded` | code → table | Does every user-facing string reach a catalog? | HIGH/MEDIUM findings with file:line |
 | `$check-l10n-unused-keys` | table → code | Is every catalog key still referenced by code? | unused / print-only / test-only / empty classification |
+| `$check-rtl-apple` | locale → layout | Does the layout survive a right-to-left locale? | must-fix / confirm / handled report with file:line |
 | `$translate` | — | Fills the gaps the audits find | updated `.xcstrings` + `l10n/` translation memory |
 
 The canonical contract for classifications, the `l10n/` working directory,
@@ -37,10 +38,13 @@ directory.
      $check-l10n-unused-keys ──┘    │
      (delete dead keys directly)    │
                                     │
+     $check-rtl-apple (RTL locales  │
+     only; report, then fix)        │
+                                    │
               gaps found by audits ─┘
 ```
 
-- Run the three audits independently; they cover disjoint defect classes.
+- Run the four audits independently; they cover disjoint defect classes.
 - `$translate` fills completeness gaps through `l10n/tool.py`
   (`missing → translate → inject → status`), appending to a cumulative
   per-locale translation memory.
