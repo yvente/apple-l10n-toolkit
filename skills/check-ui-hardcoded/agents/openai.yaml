@@ -1,0 +1,4 @@
+interface:
+  display_name: "Check UI Hardcoded"
+  short_description: "Find user-facing strings missing from catalogs."
+  default_prompt: "Use $check-ui-hardcoded to scan for hardcoded UI strings."

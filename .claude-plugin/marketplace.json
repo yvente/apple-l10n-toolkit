@@ -1,0 +1,17 @@
+{
+  "name": "apple-l10n-toolkit",
+  "interface": {
+    "displayName": "Apple L10n Toolkit"
+  },
+  "plugins": [
+    {
+      "name": "apple-l10n-toolkit",
+      "source": ".",
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

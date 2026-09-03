@@ -1,0 +1,4 @@
+interface:
+  display_name: "Check L10n (Apple)"
+  short_description: "Audit locale completeness of .strings / .xcstrings."
+  default_prompt: "Use $check-l10n-apple to audit this project's localization completeness."

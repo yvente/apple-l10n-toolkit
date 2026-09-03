@@ -1,0 +1,12 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {},
+    "Plain" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Plain" } } } },
+    "Saved %@" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Saved %@" } } } },
+    "%lld faces" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "%lld faces" } } } },
+    "OnlyInTests" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "OnlyInTests" } } } },
+    "DeadKey" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "DeadKey" } } } },
+    "LogKey" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "LogKey" } } } }
+  }
+}

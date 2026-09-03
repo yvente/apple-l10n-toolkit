@@ -1,0 +1,4 @@
+interface:
+  display_name: "Translate"
+  short_description: "Fill locale gaps with reviewed translations."
+  default_prompt: "Use $translate to fill missing localizations for these locales."

@@ -1,0 +1,32 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Hello" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Hello" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Hallo" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "こんにちは" } }
+      }
+    },
+    "Later Key" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Later Key" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "後のキー" } }
+      }
+    },
+    "Forgot Me" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Forgot Me" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Forgot Me" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "私を忘れないで" } }
+      }
+    },
+    "NASA" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "NASA" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "NASA" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "NASA" } }
+      }
+    }
+  }
+}

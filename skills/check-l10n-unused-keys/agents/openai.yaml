@@ -1,0 +1,4 @@
+interface:
+  display_name: "Check L10n Unused Keys"
+  short_description: "Find unreferenced .xcstrings keys."
+  default_prompt: "Use $check-l10n-unused-keys to find unused catalog keys."
